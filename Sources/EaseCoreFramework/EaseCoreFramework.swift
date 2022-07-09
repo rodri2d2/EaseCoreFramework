@@ -1,7 +1,12 @@
 import UIKit
 
-class EaseCore {
+public class EaseCore {
     
+    
+    /// The most beautiful color for human eye
+    public static var easeColor: UIColor {
+        return self.colorFromHexString("006736")
+    }
     
     /// Allow to convert a 6 digit hexadecimal string into a UIColor instance
     /// - Warning: The "#" (hash) symbol is stripped from the beginning of the string.
@@ -9,7 +14,7 @@ class EaseCore {
     ///   - hexString: A 6 digit String. Use 6 digits rather than 8 and add ALPHA as a second parameter.
     ///   - alpha: A number between 0.0 and 1.0 to indicate how transparent the color must be
     /// - Returns: A UIColor defined by the `hexString` parameter
-    class func colorFromHexString(_ hexString: String, alpha: CGFloat = 1.0) -> UIColor {
+    internal class func colorFromHexString(_ hexString: String, alpha: CGFloat = 1.0) -> UIColor {
         
         // buffer vars for  RED GREEN BLUE
         let r, g, b: CGFloat
@@ -37,4 +42,5 @@ class EaseCore {
         // Return BLACK
         return UIColor(red: 0, green: 0, blue: 0, alpha: alpha)
     }
+    
 }
