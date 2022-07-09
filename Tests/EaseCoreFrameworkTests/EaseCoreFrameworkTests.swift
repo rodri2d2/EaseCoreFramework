@@ -4,7 +4,9 @@ import XCTest
 final class EaseCoreFrameworkTests: XCTestCase {
     
     static var allTests = [
-        ("testColorRedEqual", test_ColorRedEqual)
+        ("test_ColorRedEqual", test_ColorRedEqual),
+        ("test_EaseColorsAreEqual", test_EaseColorsAreEqual),
+        ("test_SecondaryColorTest", test_SecondaryColorTest)
     ]
     
     
@@ -17,6 +19,11 @@ final class EaseCoreFrameworkTests: XCTestCase {
     func test_EaseColorsAreEqual() {
         let color = EaseCore.colorFromHexString("006736")
         XCTAssertEqual(color, EaseCore.easeColor)
+    }
+    
+    func test_SecondaryColorTest() {
+        let color = EaseCore.colorFromHexString("00FF00")
+        XCTAssertEqual(color, EaseCore.secondaryColor)
     }
     
 }

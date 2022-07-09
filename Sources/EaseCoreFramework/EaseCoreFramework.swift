@@ -8,6 +8,12 @@ public class EaseCore {
         return self.colorFromHexString("006736")
     }
     
+    
+    /// Returs Green UIColor
+    public static var secondaryColor: UIColor {
+        return self.colorFromHexString("00FF00")
+    }
+    
     /// Allow to convert a 6 digit hexadecimal string into a UIColor instance
     /// - Warning: The "#" (hash) symbol is stripped from the beginning of the string.
     /// - Parameters:
