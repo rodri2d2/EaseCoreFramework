@@ -6,18 +6,33 @@
 //
 
 import XCTest
+@testable import EaseCoreFramework
 
 final class EaseNetworkingTests: XCTestCase {
     
     static var allTests = [
-        ("testExample", testExample)
+        ("test_LoadDataCall", test_LoadDataCall)
     ]
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func test_LoadDataCall() {
+        let manager = EaseCore.Networking.Manager()
+        let expextation = XCTestExpectation(description: "Called for data")
+        guard let url = URL(string: "https://github.com") else {
+            return XCTFail("Could not create URL! Invalid URL!")
+        }
+        
+        manager.loadData(from: url) { result in
+            expextation.fulfill()
+            switch result {
+            case .success(let returnedData):
+                XCTAssertNotNil(returnedData, "Response data is nil!")
+            case .failure(let error):
+                XCTFail(error?.localizedDescription ?? "error forming error result")
+            }
+        }
+        
+        wait(for: [expextation], timeout: 5)
     }
+    
 }

@@ -10,5 +10,10 @@ import Foundation
 extension EaseCore {
     public class Networking {
         
+        public enum NetworkResult<Value> {
+            case success(Value)
+            case failure(Error?)
+        }
+        
     }
 }
